@@ -4,4 +4,4 @@ Disallow: /private/
 Disallow: /tmp/
 Disallow: /.git/
 
-Sitemap: https://edith-platform.web.app/sitemap.xml
+Sitemap: https://edith-1949b.web.app/sitemap.xml
