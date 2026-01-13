@@ -32,15 +32,15 @@ export const Hero = () => {
                     <div className="mt-10 flex justify-center gap-x-6">
                         <a
                             href="#"
-                            className="group rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:bg-primary-hover transition-all flex items-center gap-2"
+                            className="group rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:bg-primary-hover transition-all flex items-center gap-2 hover:shadow-primary/50 hover:-translate-y-1"
                         >
                             Get Started <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </a>
                         <a
                             href="#"
-                            className="group rounded-lg px-8 py-3 text-sm font-semibold text-white border border-white/10 hover:bg-white/5 transition-all flex items-center gap-2"
+                            className="group rounded-lg px-8 py-3 text-sm font-semibold text-white border border-white/10 hover:bg-white/5 transition-all flex items-center gap-2 hover:border-primary/50 hover:text-glow"
                         >
-                            <Play className="w-4 h-4 fill-white" /> Watch Demo
+                            <Play className="w-4 h-4 fill-white group-hover:fill-primary transition-colors" /> Watch Demo
                         </a>
                     </div>
                 </motion.div>

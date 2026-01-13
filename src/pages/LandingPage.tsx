@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
+import { Footer } from '../components/Footer';
 
 export const LandingPage = () => {
     return (
@@ -25,6 +26,8 @@ export const LandingPage = () => {
                     </div>
                 </div>
             </div>
+
+            <Footer />
         </div>
     );
 };
