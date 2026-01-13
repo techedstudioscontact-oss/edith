@@ -1,46 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+
+  html,
   body {
-    @apply bg-dark-900 text-white font-sans antialiased selection:bg-primary/30 selection:text-white;
+    @apply bg-dark-950 text-white font-sans antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden;
+    background-color: #0b0b0f;
+    /* Force dark background */
   }
 }
 
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+
+  /* ERUPT Magma Gradient - More movement, more vibrant */
+  .text-highlight-magma {
+    background: linear-gradient(to right,
+        #ff8a00 0%,
+        #ff3b3b 25%,
+        #ffd900 50%,
+        #ff3b3b 75%,
+        #ff8a00 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: magma-flow 3s linear infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 100, 0, 0.5));
   }
 
-  .glow-box {
-    box-shadow: 0 0 20px -5px rgba(99, 102, 241, 0.3);
+  .text-shimmer {
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0.4) 0%,
+        #fff 50%,
+        rgba(255, 255, 255, 0.4) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 2s linear infinite;
   }
 
-  .hover-glow:hover {
-    box-shadow: 0 0 30px -5px rgba(99, 102, 241, 0.4);
+  .text-clamp-hero {
+    font-size: clamp(2.5rem, 8vw, 7.5rem);
+    line-height: 0.9;
+  }
+
+  .glass-panel {
+    @apply bg-dark-900/60 backdrop-blur-2xl border border-white/10 shadow-glass;
+  }
+
+  /* High Performance Noise Texture */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  /* Shiny Button Effect */
+  .btn-shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shine-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent);
+    transform: skewX(-20deg);
+    transition: 0.5s;
+  }
+
+  .btn-shine-effect:hover::after {
+    animation: button-swipe 0.75s ease-out;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
   }
 }
 
-.animate-gradient {
-  background-size: 200% auto;
-  animation: gradient 3s linear infinite;
+/* Advanced Animations */
+@keyframes magma-flow {
+  to {
+    background-position: 200% center;
+  }
 }
 
-@keyframes gradient {
+@keyframes shimmer {
+  from {
+    background-position: 200% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
+@keyframes button-swipe {
   0% {
-    transform: translateX(0);
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
+    left: -100%;
   }
 
   100% {
-    transform: translateX(0);
-    background-position: 0% 50%;
+    left: 100%;
   }
+}
+
+@keyframes float-ethereal {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  33% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+
+  66% {
+    transform: translateY(10px) rotate(-1deg);
+  }
+}
+
+@keyframes float-particle {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translate(var(--tx), var(--ty));
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(var(--tx-end), var(--ty-end));
+    opacity: 0;
+  }
+}
+
+.animate-float-ethereal {
+  animation: float-ethereal 8s ease-in-out infinite;
 }

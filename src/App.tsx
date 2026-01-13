@@ -1,10 +1,49 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import { LandingPage } from './pages/LandingPage';
+import { Login } from './pages/Login';
+import { SignUp } from './pages/SignUp';
+import { ProfileSetup } from './pages/ProfileSetup';
+import { FindEditors } from './pages/FindEditors';
+import { FindCreators } from './pages/FindCreators';
 import './index.css';
+
+const PageWrapper = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.3 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageWrapper><LandingPage /></PageWrapper>} />
+        <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
+        <Route path="/signup" element={<PageWrapper><SignUp /></PageWrapper>} />
+        <Route path="/profile-setup" element={<PageWrapper><ProfileSetup /></PageWrapper>} />
+        <Route path="/find-editors" element={<PageWrapper><FindEditors /></PageWrapper>} />
+        <Route path="/find-creators" element={<PageWrapper><FindCreators /></PageWrapper>} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 function App() {
   return (
-    <LandingPage />
+    <Router>
+      <AnimatedRoutes />
+    </Router>
   );
 }
 

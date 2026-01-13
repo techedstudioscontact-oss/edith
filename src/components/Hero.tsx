@@ -1,52 +1,111 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Play, Sparkles } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { Play, Sparkles, Zap, Video, MousePointer2 } from 'lucide-react';
 
 export const Hero = () => {
-    return (
-        <div className="relative overflow-hidden bg-dark-900 pt-16">
-            {/* Background gradients */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-secondary/20 blur-[100px] rounded-full pointer-events-none" />
+    const { scrollY } = useScroll();
+    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-32">
+    // Mouse Parallax (simplified)
+    const ref = useRef<HTMLDivElement>(null);
+
+    return (
+        <header ref={ref} className="relative overflow-hidden bg-dark-950 pt-32 pb-20 lg:pt-48 lg:pb-32 min-h-screen flex items-center justify-center selection:bg-primary/30 perspective-1000">
+            {/* God Level Background Effects */}
+            <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none z-10 mix-blend-overlay" />
+
+            {/* Aurora Magma */}
+            <div className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] bg-primary/20 blur-[150px] rounded-full animate-aurora-1 mix-blend-screen opacity-40 pointer-events-none" />
+            <div className="absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] bg-purple-500/10 blur-[150px] rounded-full animate-aurora-2 mix-blend-screen opacity-30 pointer-events-none" />
+
+            {/* Floating 3D Elements */}
+            <motion.div style={{ y: y1, rotate: -10 }} className="absolute top-40 left-[10%] p-4 bg-dark-900/50 backdrop-blur-xl border border-white/10 rounded-2xl z-0 hidden lg:block animate-float-ethereal">
+                <Video className="w-12 h-12 text-primary" />
+                <div className="absolute -bottom-6 right-0 bg-white text-dark-950 text-xs font-bold px-2 py-1 rounded shadow-lg">4K RAW</div>
+            </motion.div>
+
+            <motion.div style={{ y: y2, rotate: 15 }} className="absolute bottom-40 right-[10%] p-4 bg-dark-900/50 backdrop-blur-xl border border-white/10 rounded-2xl z-0 hidden lg:block animate-float-ethereal" transition={{ delay: 1 }}>
+                <Zap className="w-12 h-12 text-yellow-400" />
+                <div className="absolute -top-3 -right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">+200% Views</div>
+            </motion.div>
+
+            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 text-center w-full">
+
+                {/* Preheadline */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-primary font-bold tracking-widest uppercase text-xs sm:text-sm mb-8 shadow-glow"
                 >
-                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary-hover text-sm font-medium mb-8">
-                        <Sparkles className="w-4 h-4" />
-                        The #1 Marketplace for Creator-Editor Collaboration
-                    </span>
-                    <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-white sm:text-7xl">
-                        Create content that{' '}
-                        <span className="relative whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient">
-                            goes viral
-                        </span>
-                    </h1>
-                    <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-gray-400">
-                        Connect with top-tier video editors who understand your style.
-                        Streamline your workflow, scale your production, and focus on what you do best—creating.
-                    </p>
-                    <div className="mt-10 flex justify-center gap-x-6">
-                        <a
-                            href="#"
-                            className="group rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:bg-primary-hover transition-all flex items-center gap-2 hover:shadow-primary/50 hover:-translate-y-1"
-                        >
-                            Get Started <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </a>
-                        <a
-                            href="#"
-                            className="group rounded-lg px-8 py-3 text-sm font-semibold text-white border border-white/10 hover:bg-white/5 transition-all flex items-center gap-2 hover:border-primary/50 hover:text-glow"
-                        >
-                            <Play className="w-4 h-4 fill-white group-hover:fill-primary transition-colors" /> Watch Demo
-                        </a>
-                    </div>
+                    <Sparkles className="w-4 h-4 animate-pulse" />
+                    The #1 Marketplace for Creators
                 </motion.div>
 
-                {/* Floating cards animation could go here */}
+                {/* Headline - Stacked & Clamped */}
+                <h1 className="font-display font-black text-white mb-8 text-clamp-hero leading-[0.85] tracking-tighter relative drop-shadow-2xl">
+                    <motion.span
+                        initial={{ opacity: 0, y: 60, rotateX: -40 }}
+                        animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                        transition={{ duration: 1, type: "spring", bounce: 0.5 }}
+                        className="block relative z-10"
+                    >
+                        CREATE
+                    </motion.span>
+                    <motion.span
+                        initial={{ opacity: 0, y: 60, rotateX: -40 }}
+                        animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                        transition={{ duration: 1, delay: 0.15, type: "spring", bounce: 0.5 }}
+                        className="block relative z-10"
+                    >
+                        CONTENT
+                    </motion.span>
+                    <motion.span
+                        initial={{ opacity: 0, y: 60, rotateX: -40 }}
+                        animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                        transition={{ duration: 1, delay: 0.3, type: "spring", bounce: 0.5 }}
+                        className="block relative z-10"
+                    >
+                        THAT <span className="text-highlight-magma inline-block relative">
+                            ERUPTS
+                            <div className="absolute inset-0 blur-xl bg-primary/30 -z-10 animate-pulse" />
+                        </span>
+                    </motion.span>
+                </h1>
+
+                {/* Subtext */}
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+                    className="mx-auto max-w-2xl text-gray-400 font-light mb-12 text-lg sm:text-xl md:text-2xl leading-relaxed"
+                >
+                    Stop editing. Connect with elite editors who turn raw footage into <span className="text-white font-semibold">viral masterpieces</span>.
+                </motion.p>
+
+                {/* Actions */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                    className="flex flex-col sm:flex-row justify-center gap-6 items-center"
+                >
+                    <button
+                        onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="group relative px-10 py-5 bg-gradient-to-r from-primary to-primary-end text-white font-bold text-xl rounded-2xl overflow-hidden shadow-glow transition-all hover:shadow-glow-lg hover:scale-105 w-full sm:w-auto btn-shine-effect"
+                    >
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                            Get Started Now <MousePointer2 className="w-5 h-5 fill-white" />
+                        </span>
+                    </button>
+
+                    <button className="px-10 py-5 rounded-2xl text-white font-semibold border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all flex items-center justify-center gap-3 w-full sm:w-auto backdrop-blur-sm group">
+                        <Play className="w-5 h-5 fill-white group-hover:text-primary transition-colors" /> Watch 30s Demo
+                    </button>
+                </motion.div>
+
             </div>
-        </div>
+        </header>
     );
 };

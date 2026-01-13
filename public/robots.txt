@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /.git/
+
+Sitemap: https://edith-platform.web.app/sitemap.xml
