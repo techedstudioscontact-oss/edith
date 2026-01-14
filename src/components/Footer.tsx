@@ -1,4 +1,3 @@
-import React from 'react';
 import { Video, Twitter, Instagram, Linkedin, Github, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

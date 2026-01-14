@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, ShieldCheck, Award, ArrowRight } from 'lucide-react';
 

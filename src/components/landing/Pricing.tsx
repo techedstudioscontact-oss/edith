@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Star } from 'lucide-react';
 
@@ -120,8 +119,8 @@ export const Pricing = () => {
                                 </div>
 
                                 <button className={`w-full py-4 rounded-xl font-bold transition-all btn-shine-effect tracking-wide text-sm uppercase ${plan.highlight
-                                        ? 'bg-gradient-to-r from-primary to-primary-end text-white shadow-lg shadow-primary/30 hover:shadow-primary/50'
-                                        : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20'
+                                    ? 'bg-gradient-to-r from-primary to-primary-end text-white shadow-lg shadow-primary/30 hover:shadow-primary/50'
+                                    : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20'
                                     }`}>
                                     Get {plan.name}
                                 </button>

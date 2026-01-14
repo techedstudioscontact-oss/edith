@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronDown, Quote, CheckCircle2 } from 'lucide-react';
 import { SpotlightCard } from '../SpotlightCard';

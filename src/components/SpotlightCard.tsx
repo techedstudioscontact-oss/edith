@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
 
 interface SpotlightCardProps {
@@ -9,7 +9,6 @@ interface SpotlightCardProps {
 
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({ children, className = "", delay = 0 }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const [isHovered, setIsHovered] = useState(false);
 
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
@@ -36,12 +35,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({ children, classNam
         y.set(rotateYValue);
     }
 
-    function handleMouseEnter() {
-        setIsHovered(true);
-    }
-
     function handleMouseLeave() {
-        setIsHovered(false);
         x.set(0);
         y.set(0);
     }
@@ -50,7 +44,6 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({ children, classNam
         <motion.div
             ref={ref}
             onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

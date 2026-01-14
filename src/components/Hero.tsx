@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Play, Sparkles, Zap, Video, MousePointer2 } from 'lucide-react';
 
 export const Hero = () => {

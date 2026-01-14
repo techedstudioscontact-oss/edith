@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { Navbar } from '../components/Navbar';
-import { motion } from 'framer-motion';
-import { User, Mail, Video } from 'lucide-react';
+import { Mail, Video } from 'lucide-react';
 import { SpotlightCard } from '../components/SpotlightCard';
 
 interface Creator {

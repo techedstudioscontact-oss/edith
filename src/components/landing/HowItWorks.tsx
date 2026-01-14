@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Upload, UserCheck, CheckCircle, ArrowRight } from 'lucide-react';
+import { Upload, UserCheck, CheckCircle } from 'lucide-react';
 import { SpotlightCard } from '../SpotlightCard';
 
 const STEPS = [
