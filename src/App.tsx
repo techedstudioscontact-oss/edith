@@ -41,7 +41,7 @@ const AnimatedRoutes = () => {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/edith">
       <AnimatedRoutes />
     </Router>
   );
