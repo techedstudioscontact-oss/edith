@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Video, User, Briefcase, Link as LinkIcon, Check } from 'lucide-react';
+import { Video, User, Briefcase, Link as LinkIcon, Check, Tag } from 'lucide-react';
 import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../lib/firebase';
 import { useNavigate } from 'react-router-dom';
 import { DrivePlayer } from '../components/DrivePlayer';
 
+// SEO-optimized skill categories
+const EDITOR_SKILLS = [
+    'Video Editing', 'Motion Graphics', 'Color Grading', 'VFX', 'Sound Design',
+    'After Effects', 'Premiere Pro', 'DaVinci Resolve', 'Final Cut Pro',
+    'YouTube Editing', 'Short Form Content', 'Long Form Content', 'Thumbnails'
+];
+
+const CREATOR_SKILLS = [
+    'Gaming', 'Lifestyle', 'Tech Reviews', 'Vlogging', 'Educational',
+    'Comedy', 'Music', 'Cooking', 'Travel', 'Fitness', 'Beauty', 'Business'
+];
+
 export const ProfileSetup = () => {
     const [role, setRole] = useState<'creator' | 'editor' | null>(null);
     const [bio, setBio] = useState('');
     const [driveLink, setDriveLink] = useState('');
+    const [skills, setSkills] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    const toggleSkill = (skill: string) => {
+        setSkills(prev =>
+            prev.includes(skill)
+                ? prev.filter(s => s !== skill)
+                : [...prev, skill]
+        );
+    };
 
     const handleSave = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -25,7 +46,8 @@ export const ProfileSetup = () => {
                 displayName: auth.currentUser.displayName || auth.currentUser.email?.split('@')[0],
                 role,
                 bio,
-                driveLink, // Save Drive Link
+                skills, // Save selected skills
+                driveLink,
                 createdAt: new Date().toISOString()
             });
             navigate(role === 'creator' ? '/find-editors' : '/find-creators');
@@ -93,9 +115,37 @@ export const ProfileSetup = () => {
                         </button>
                     </div>
 
+                    {/* Skills Selection */}
+                    {role && (
+                        <div>
+                            <label className="block text-sm font-medium text-gray-400 mb-3 flex items-center gap-2">
+                                <Tag className="w-4 h-4" />
+                                Select Your {role === 'editor' ? 'Skills' : 'Content Categories'}
+                            </label>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                {(role === 'editor' ? EDITOR_SKILLS : CREATOR_SKILLS).map((skill) => (
+                                    <button
+                                        key={skill}
+                                        type="button"
+                                        onClick={() => toggleSkill(skill)}
+                                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${skills.includes(skill)
+                                                ? 'bg-primary text-white shadow-lg shadow-primary/30'
+                                                : 'bg-dark-800 text-gray-400 border border-white/10 hover:border-primary/50 hover:text-white'
+                                            }`}
+                                    >
+                                        {skill}
+                                    </button>
+                                ))}
+                            </div>
+                            <p className="mt-2 text-xs text-gray-500">
+                                Select skills/categories to help others find you. Choose all that apply.
+                            </p>
+                        </div>
+                    )}
+
                     {/* Bio Field */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-400 mb-2">Bio / Skills</label>
+                        <label className="block text-sm font-medium text-gray-400 mb-2">Bio</label>
                         <textarea
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
