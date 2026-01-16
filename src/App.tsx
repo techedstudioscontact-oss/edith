@@ -7,6 +7,9 @@ import { ProfileSetup } from './pages/ProfileSetup';
 import { FindEditors } from './pages/FindEditors';
 import { FindCreators } from './pages/FindCreators';
 import { Contact } from './pages/Contact';
+import { About } from './pages/About';
+import { Careers } from './pages/Careers';
+import { Blog } from './pages/Blog';
 import './index.css';
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
@@ -35,6 +38,9 @@ const AnimatedRoutes = () => {
         <Route path="/find-editors" element={<PageWrapper><FindEditors /></PageWrapper>} />
         <Route path="/find-creators" element={<PageWrapper><FindCreators /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+        <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
+        <Route path="/careers" element={<PageWrapper><Careers /></PageWrapper>} />
+        <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );

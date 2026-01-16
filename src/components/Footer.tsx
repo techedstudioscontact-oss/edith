@@ -9,9 +9,9 @@ const SITEMAP = {
         { name: 'How it Works', href: '#how-it-works' },
     ],
     Company: [
-        { name: 'About Us', href: '/#' },
-        { name: 'Careers', href: '/#' },
-        { name: 'Blog', href: '/#' },
+        { name: 'About Us', href: '/about' },
+        { name: 'Careers', href: '/careers' },
+        { name: 'Blog', href: '/blog' },
         { name: 'Contact', href: '/contact' },
     ],
     Legal: [
@@ -75,11 +75,7 @@ export const Footer = () => {
                         <ul className="space-y-4">
                             {SITEMAP.Company.map((item) => (
                                 <li key={item.name}>
-                                    {item.href === '/contact' ? (
-                                        <Link to={item.href} className="text-gray-400 hover:text-white transition-colors">{item.name}</Link>
-                                    ) : (
-                                        <a href={item.href} className="text-gray-400 hover:text-white transition-colors">{item.name}</a>
-                                    )}
+                                    <Link to={item.href} className="text-gray-400 hover:text-white transition-colors">{item.name}</Link>
                                 </li>
                             ))}
                         </ul>
