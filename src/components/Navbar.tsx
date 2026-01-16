@@ -19,15 +19,14 @@ export const Navbar = () => {
                             <div className="ml-10 flex items-baseline space-x-4">
                                 <Link to="/find-editors" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:text-glow">Find Editors</Link>
                                 <Link to="/find-creators" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:text-glow">Find Creators</Link>
-                                <a href="/#how-it-works" onClick={(e) => {
-                                    e.preventDefault();
-                                    const element = document.getElementById('how-it-works');
-                                    if (element) {
-                                        element.scrollIntoView({ behavior: 'smooth' });
-                                    } else {
-                                        window.location.href = '/#how-it-works';
-                                    }
-                                }} className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:text-glow cursor-pointer">How it Works</a>
+                                <Link to="/" onClick={() => {
+                                    setTimeout(() => {
+                                        const element = document.getElementById('how-it-works');
+                                        if (element) {
+                                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        }
+                                    }, 100);
+                                }} className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:text-glow cursor-pointer">How it Works</Link>
                             </div>
                         </div>
                     </div>
@@ -63,16 +62,15 @@ export const Navbar = () => {
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                             <Link to="/find-editors" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Find Editors</Link>
                             <Link to="/find-creators" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Find Creators</Link>
-                            <a href="/#how-it-works" onClick={(e) => {
-                                e.preventDefault();
+                            <Link to="/" onClick={() => {
                                 setIsOpen(false);
-                                const element = document.getElementById('how-it-works');
-                                if (element) {
-                                    element.scrollIntoView({ behavior: 'smooth' });
-                                } else {
-                                    window.location.href = '/#how-it-works';
-                                }
-                            }} className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer">How it Works</a>
+                                setTimeout(() => {
+                                    const element = document.getElementById('how-it-works');
+                                    if (element) {
+                                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }
+                                }, 100);
+                            }} className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer">How it Works</Link>
                             <div className="pt-4 flex flex-col space-y-2">
                                 <Link to="/login" className="w-full text-center text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">
                                     Log In
