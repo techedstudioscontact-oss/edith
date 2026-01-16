@@ -4,4 +4,4 @@ Disallow: /private/
 Disallow: /tmp/
 Disallow: /.git/
 
-Sitemap: https://edith-1949b.web.app/sitemap.xml
+Sitemap: https://techedstudioscontact-oss.github.io/edith/sitemap.xml
