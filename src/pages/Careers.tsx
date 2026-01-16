@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { Briefcase, MapPin, Clock, DollarSign, Heart, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const JOB_OPENINGS = [
     {
@@ -122,12 +123,12 @@ export const Careers = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <a
-                                            href="mailto:techedstudios.contact@gmail.com?subject=Job Application"
+                                        <Link
+                                            to={`/apply?job=${encodeURIComponent(job.title)}`}
                                             className="px-6 py-3 bg-primary hover:bg-primary-hover text-white font-bold rounded-xl transition-all hover:-translate-y-0.5 text-center whitespace-nowrap"
                                         >
                                             Apply Now
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             ))}
@@ -145,12 +146,12 @@ export const Careers = () => {
                         <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
                             We're always looking for talented people. Send us your resume and tell us how you can contribute to EDITH.
                         </p>
-                        <a
-                            href="mailto:techedstudios.contact@gmail.com?subject=General Application"
+                        <Link
+                            to="/apply?job=Other / General Application"
                             className="inline-block px-8 py-4 bg-primary hover:bg-primary-hover text-white font-bold rounded-xl transition-all hover:-translate-y-0.5"
                         >
                             Send Your Resume
-                        </a>
+                        </Link>
                     </motion.div>
                 </div>
             </div>

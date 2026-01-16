@@ -10,6 +10,7 @@ import { Contact } from './pages/Contact';
 import { About } from './pages/About';
 import { Careers } from './pages/Careers';
 import { Blog } from './pages/Blog';
+import { Apply } from './pages/Apply';
 import './index.css';
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
@@ -41,6 +42,7 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/careers" element={<PageWrapper><Careers /></PageWrapper>} />
         <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+        <Route path="/apply" element={<PageWrapper><Apply /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
