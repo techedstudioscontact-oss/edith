@@ -6,6 +6,7 @@ import { SignUp } from './pages/SignUp';
 import { ProfileSetup } from './pages/ProfileSetup';
 import { FindEditors } from './pages/FindEditors';
 import { FindCreators } from './pages/FindCreators';
+import { Contact } from './pages/Contact';
 import './index.css';
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
@@ -33,6 +34,7 @@ const AnimatedRoutes = () => {
         <Route path="/profile-setup" element={<PageWrapper><ProfileSetup /></PageWrapper>} />
         <Route path="/find-editors" element={<PageWrapper><FindEditors /></PageWrapper>} />
         <Route path="/find-creators" element={<PageWrapper><FindCreators /></PageWrapper>} />
+        <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
