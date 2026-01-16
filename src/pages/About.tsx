@@ -4,9 +4,9 @@ import { Footer } from '../components/Footer';
 import { Video, Target, Users, Zap, Heart } from 'lucide-react';
 
 const TEAM_MEMBERS = [
-    { name: 'Teched Studios', role: 'Founder & CEO', description: 'Visionary leader bringing creators and editors together' },
+    { name: 'Prajjwal Kumar Gupta', role: 'Founder & CEO', description: 'Visionary leader with expertise in AI and full-stack development. Passionate about creating transformative digital experiences.' },
+    { name: 'Shresta Arun', role: 'Co-Founder & CEO', description: 'Strategic thinker with a focus on business development and product innovation. Dedicated to pushing the boundaries of technology.' },
     { name: 'Development Team', role: 'Engineering', description: 'Building the future of content collaboration' },
-    { name: 'Community Team', role: 'Support', description: 'Ensuring the best experience for our users' },
 ];
 
 const VALUES = [
@@ -58,8 +58,8 @@ export const About = () => {
                                 where talented editors and ambitious creators collaborate seamlessly.
                             </p>
                             <p className="text-gray-400 leading-relaxed">
-                                We believe every creator deserves access to professional editing, and every
-                                editor deserves opportunities to showcase their craft.
+                                Built by Teched Studios, we believe every creator deserves access to professional editing,
+                                and every editor deserves opportunities to showcase their craft.
                             </p>
                         </motion.div>
 
@@ -112,7 +112,7 @@ export const About = () => {
                         transition={{ delay: 0.5 }}
                         className="mb-20"
                     >
-                        <h2 className="text-4xl font-bold text-center mb-12">Meet the Team</h2>
+                        <h2 className="text-4xl font-bold text-center mb-12">The Teched Studios Team</h2>
                         <div className="grid md:grid-cols-3 gap-8">
                             {TEAM_MEMBERS.map((member, index) => (
                                 <div
