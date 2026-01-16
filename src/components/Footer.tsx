@@ -99,7 +99,7 @@ export const Footer = () => {
                         &copy; {new Date().getFullYear()} EDITH Inc. All rights reserved.
                     </p>
                     <div className="flex items-center gap-1 text-gray-500 text-sm">
-                        Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by Antigravity
+                        Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by TechEd Studios
                     </div>
                 </div>
             </div>
