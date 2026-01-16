@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer';
 import { Video, Target, Users, Zap, Heart } from 'lucide-react';
 
 const TEAM_MEMBERS = [
-    { name: 'TechEd Studios', role: 'Founder & CEO', description: 'Visionary leader bringing creators and editors together' },
+    { name: 'Teched Studios', role: 'Founder & CEO', description: 'Visionary leader bringing creators and editors together' },
     { name: 'Development Team', role: 'Engineering', description: 'Building the future of content collaboration' },
     { name: 'Community Team', role: 'Support', description: 'Ensuring the best experience for our users' },
 ];
